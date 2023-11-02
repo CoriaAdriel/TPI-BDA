@@ -25,7 +25,7 @@ public class EstacionController
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<EstacionDto> update(@PathVariable("id") long id)
+    public ResponseEntity<EstacionDto> getById(@PathVariable("id") long id)
     {
         EstacionDto estacionDto = this.estacionService.getById(id);
         return ResponseEntity.ok(estacionDto);

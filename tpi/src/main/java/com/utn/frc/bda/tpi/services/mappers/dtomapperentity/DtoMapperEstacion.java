@@ -1,4 +1,4 @@
-package com.utn.frc.bda.tpi.services.mappers;
+package com.utn.frc.bda.tpi.services.mappers.dtomapperentity;
 
 import com.utn.frc.bda.tpi.entidades.Estacion;
 import com.utn.frc.bda.tpi.entidades.dto.EstacionDto;

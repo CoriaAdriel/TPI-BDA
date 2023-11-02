@@ -3,8 +3,8 @@ package com.utn.frc.bda.tpi.services;
 import com.utn.frc.bda.tpi.entidades.Estacion;
 import com.utn.frc.bda.tpi.entidades.dto.EstacionDto;
 import com.utn.frc.bda.tpi.repositories.EstacionRepository;
-import com.utn.frc.bda.tpi.services.mappers.DtoMapperEstacion;
-import com.utn.frc.bda.tpi.services.mappers.EstacionMapperDto;
+import com.utn.frc.bda.tpi.services.mappers.dtomapperentity.DtoMapperEstacion;
+import com.utn.frc.bda.tpi.services.mappers.entitymapperdto.EstacionMapperDto;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -53,23 +53,23 @@ public class EstacionServiceImpl implements EstacionService
     }
 
     @Override
-    public EstacionDto delete(Long id)
-    {
-        EstacionDto estacionDto = this.getById(id);
-        if(estacionDto != null)
-        {
-            Optional<Estacion> entity = Stream.of(estacionDto).map(dtoMapperEstacion).findFirst();
-            entity.ifPresent(estacionRepository::delete);
-        }
-        return estacionDto;
-    }
-
-    @Override
     public EstacionDto update(EstacionDto estacionDto)
     {
         Optional<Estacion> estacion = Stream.of(estacionDto).map(dtoMapperEstacion).findFirst();
         estacion.ifPresent(estacionRepository::save);
         return estacion.map(estacionMapperDto).orElseThrow();
     }
+    @Override
+    public EstacionDto delete(Long id)
+    {
+        EstacionDto estacionDto = this.getById(id);
+        if(estacionDto != null)
+        {
+            Optional<Estacion> estacion = Stream.of(estacionDto).map(dtoMapperEstacion).findFirst();
+            estacion.ifPresent(estacionRepository::delete);
+        }
+        return estacionDto;
+    }
+
 
 }

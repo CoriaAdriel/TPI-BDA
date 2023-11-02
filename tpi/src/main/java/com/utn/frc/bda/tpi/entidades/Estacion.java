@@ -1,5 +1,6 @@
 package com.utn.frc.bda.tpi.entidades;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -17,14 +18,15 @@ public class Estacion
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID")
-    private long id;
+    private Long id;
     @Column(name = "NOMBRE")
     private String nombre;
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", shape = JsonFormat.Shape.STRING)
     @Column(name = "FECHA_HORA_CREACION")
-    private String fechaHoraCreacion; // LocalDateTime
+    private LocalDateTime fechaHoraCreacion;
     @Column(name = "LATITUD")
-    private float latitud;
+    private Float latitud;
     @Column(name = "LONGITUD")
-    private float longitud;
+    private Float longitud;
 
 }

@@ -8,6 +8,6 @@ public interface Service<T, ID>
     List<T> getAll();
     T getById(ID id);
     T add(T entity);
-    T delete(ID id);
     T update(T entity);
+    T delete(ID id);
 }
